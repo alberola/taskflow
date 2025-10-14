@@ -37,9 +37,9 @@ Antes de comenzar, asegúrate de tener instalado:
 
 Desde la raíz del proyecto:
 
-
+```bash
 -docker compose up -d --build
-
+```
 Esto levantará los siguientes servicios:
 
 | Servicio | Puerto | Descripción |
@@ -66,15 +66,15 @@ Esto levantará los siguientes servicios:
 
 Entra al contenedor PHP:
 
-
+```bash
 -docker exec -it taskflow_app bash
-
+```
 
 Ejecuta dentro los comandos habituales de Laravel:
 
-
+```bash
 -php artisan migrate
-
+```
 
 
 > 🔑 **Nota importante:**  
@@ -120,6 +120,7 @@ Cuando se integre, se levantará automáticamente en el puerto **5173** con:
 ```bash
 docker compose up -d node
 ```
+Hay que destacar que en este caso tendrias que levantar node solamente en el caso de que no estuviera caido, como está actualmente (En caso de que estuviera como ahora mismo, igualmente se irá actualizando).
 
 ---
 
