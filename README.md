@@ -23,8 +23,7 @@ Antes de comenzar, asegúrate de tener instalado:
 ## ⚙️ 2️⃣ Clonar el repositorio
 
 
--git clone https://github.com/tuusuario/taskflow.git
--cd taskflow
+-git clone https://github.com/tuusuario/taskflow.git 
 
 > El proyecto ya incluye:
 > - Código fuente de Laravel.
@@ -44,7 +43,6 @@ Esto levantará los siguientes servicios:
 
 | Servicio | Puerto | Descripción |
 |-----------|---------|-------------|
-| **app** (PHP-FPM / Laravel) | — | Contenedor principal de Laravel |
 | **nginx** | 8080 | Servidor web que sirve la aplicación |
 | **mysql** | 3306 | Base de datos MySQL |
 | **phpmyadmin** | 8081 | Interfaz web para gestionar la base de datos |
@@ -130,16 +128,17 @@ Hay que destacar que en este caso tendrias que levantar node solamente en el cas
 
 Comprueba que todos los contenedores estén activos:
 
-
+```
 docker ps
+```
 
 Deberías ver algo así:
 
 
-taskflow_app         Up
-taskflow_nginx       Up
-taskflow_mysql       Up
-taskflow_phpmyadmin  Up
+> taskflow_app         Up <br>
+> taskflow_nginx       Up <br>
+> taskflow_mysql       Up <br>
+> taskflow_phpmyadmin  Up <br>
 
 
 Abre en tu navegador:  
@@ -151,8 +150,9 @@ Abre en tu navegador:
  
 - Si eliminas los contenedores, los datos de MySQL se conservarán en el volumen `mysql_data`.
 
-La mayoría de las instrucciones de esta guía —como php artisan migrate, composer install, o php artisan config:clear— se ejecutan desde dentro del contenedor Docker y no directamente desde tu sistema operativo.
-
+La mayoría de las instrucciones de esta guía como :
+"php artisan migrate", "composer install", o "php artisan config:clear"
+se ejecutan desde dentro del contenedor Docker y no directamente desde tu sistema operativo.
 Esto se debe a que el contenedor actúa como un entorno de servidor real, aislado de tu máquina local.
 De esta forma:
 
@@ -167,8 +167,9 @@ En resumen, al ejecutar los comandos dentro del contenedor, estás trabajando de
 asegurando que todo funcione igual para cualquier desarrollador o entorno.
 
 - Para reconstruir desde cero:
-  docker compose down -v
-  docker compose up -d --build
+
+  > docker compose down -v <br>
+  > docker compose up -d --build
 
 ---
 
