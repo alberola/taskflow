@@ -95,6 +95,9 @@ Ejecuta dentro los comandos habituales de Laravel:
 
 ---
 
+## MUY IMPORTANTE: <br>
+Recordar cambiar valores en el archivo .env.example que genera laravel automaticamente por los deseados (los mismos que se tienen en el docker-compose.yml de la base de datos) y darle el nombre de .env solamente una vez lo tenemos listo en nuestro equipo.
+
 ## 🧩 7️⃣ phpMyAdmin
 
 Puedes acceder desde:  
