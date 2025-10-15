@@ -73,6 +73,7 @@ Entra al contenedor PHP:
 Ejecuta dentro los comandos habituales de Laravel:
 
 ```bash
+-php artisan key:generate
 -php artisan migrate
 ```
 
