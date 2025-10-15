@@ -1,6 +1,6 @@
 # 🐳 Taskflow — Entorno Laravel con Docker
 
-Taskflow es un proyecto personal orientado a la gestión de tareas, productividad y automatización de flujos de trabajo.
+Taskflow es un proyecto personal orientado a la gestión de tareas y productividad.
 
 Este repositorio contiene el entorno completo de desarrollo, configurado con **Docker Compose**, **Laravel**, **MySQL**, **Nginx** y **phpMyAdmin**.  
 El objetivo es que cualquier persona pueda clonar el proyecto, levantar los contenedores y probar el backend de Laravel sin configuraciones adicionales.
