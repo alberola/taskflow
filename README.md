@@ -39,7 +39,7 @@ Antes de comenzar, asegúrate de tener instalado:
 Desde la raíz del proyecto:
 
 ```bash
--docker compose up -d --build
+docker compose up -d --build
 ```
 Esto levantará los siguientes servicios:
 
@@ -51,8 +51,18 @@ Esto levantará los siguientes servicios:
 | **node** | — | Contenedor definido pero aún no utilizado (para el futuro frontend Vue) |
 
 ---
+## ⚙️ 4️⃣ Comandos para arrancar Laravel
 
-## 🌐 4️⃣ Accesos rápidos
+Entra al contenedor PHP:
+
+```bash
+docker exec -it taskflow_app bash
+composer install
+php artisan key:generate
+php artisan migrate
+```
+
+## 🌐 5️⃣ Accesos rápidos
 
 | Recurso | URL / Datos | Descripción |
 |----------|--------------|-------------|
@@ -62,26 +72,6 @@ Esto levantará los siguientes servicios:
 
 ---
 
-## ⚙️ 5️⃣ Comandos útiles de Laravel
-
-Entra al contenedor PHP:
-
-```bash
--docker exec -it taskflow_app bash
-```
-
-Ejecuta dentro los comandos habituales de Laravel:
-
-```bash
--php artisan key:generate
--php artisan migrate
-```
-
-
-> 🔑 **Nota importante:**  
-> En el archivo `.env`, el `DB_HOST` **debe ser `mysql`**, no `127.0.0.1` ni `localhost`.  
-> De lo contrario, Laravel no podrá conectarse a la base de datos y mostrará:  
-> `SQLSTATE[HY000] [2002] Connection refused`.
 
 ---
 
@@ -90,7 +80,6 @@ Ejecuta dentro los comandos habituales de Laravel:
 | Problema | Causa | Solución |
 |-----------|--------|-----------|
 | `Cannot connect to the Docker daemon` | Docker Desktop no está corriendo | Abre Docker Desktop 🐳 |
-| `File not found` al abrir `localhost:8080` | Laravel estaba dentro de una subcarpeta (`backend/taskflowBack`) | Mueve el contenido directamente a `backend/` |
 | `SQLSTATE[HY000] [2002] Connection refused` | `.env` con `DB_HOST=127.0.0.1` | Cambiar a `DB_HOST=mysql` |
 | `Access denied for user` | Credenciales distintas a las del `docker-compose.yml` | Verificar `DB_USERNAME` y `DB_PASSWORD` en .env|
 
@@ -99,22 +88,8 @@ Ejecuta dentro los comandos habituales de Laravel:
 ## MUY IMPORTANTE: <br>
 Recordar cambiar valores en el archivo .env.example que genera laravel automaticamente por los deseados (los mismos que se tienen en el docker-compose.yml de la base de datos) y darle el nombre de .env solamente una vez lo tenemos listo en nuestro equipo.
 
-## 🧩 7️⃣ phpMyAdmin
 
-Puedes acceder desde:  
-👉 [http://localhost:8081](http://localhost:8081)
-
-Credenciales:
-
-```
-Servidor: mysql
-Usuario: taskflow_user
-Contraseña: taskflow_pass
-```
-
----
-
-## ⚙️ 8️⃣ Frontend (Vue / Node)
+## ⚙️ 7️⃣ Frontend (Vue / Node)
 
 El servicio Node y el entorno para Vue **ya están definidos en el `docker-compose.yml`**,  
 pero **todavía no se ha implementado ningún proyecto frontend**.
@@ -130,7 +105,7 @@ Hay que destacar que en este caso tendrias que levantar node solamente en el cas
 
 ---
 
-## ✅ 9️⃣ Verificación final
+## ✅ 8️⃣ Verificación Adicional
 
 Comprueba que todos los contenedores estén activos:
 
@@ -157,7 +132,7 @@ Abre en tu navegador:
 - Si eliminas los contenedores, los datos de MySQL se conservarán en el volumen `mysql_data`.
 
 La mayoría de las instrucciones de esta guía como :
-"php artisan migrate", "composer install", o "php artisan config:clear"
+"composer install", "php artisan migrate" o "php artisan key:generate"
 se ejecutan desde dentro del contenedor Docker y no directamente desde tu sistema operativo.
 Esto se debe a que el contenedor actúa como un entorno de servidor real, aislado de tu máquina local.
 De esta forma:
@@ -172,7 +147,7 @@ De esta forma:
 En resumen, al ejecutar los comandos dentro del contenedor, estás trabajando dentro del mismo entorno en el que se ejecuta la aplicación,
 asegurando que todo funcione igual para cualquier desarrollador o entorno.
 
-- Para reconstruir desde cero:
+- Para reconstruir:
 
   > docker compose down -v <br>
   > docker compose up -d --build
@@ -180,5 +155,5 @@ asegurando que todo funcione igual para cualquier desarrollador o entorno.
 ---
 
 ✍️ **Autor:** Alejandro Alberola
-📅 **Última actualización:** 14 Octubre 2025  
+📅 **Última actualización:** Octubre 2025  
 🧱 **Estado actual:** Backend funcional — Frontend en desarrollo
