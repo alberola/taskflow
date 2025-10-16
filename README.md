@@ -122,9 +122,6 @@ Deberías ver algo así:
 > taskflow_phpmyadmin  Up <br>
 
 
-Abre en tu navegador:  
-👉 [http://localhost:8080](http://localhost:8080) → pantalla de bienvenida de Laravel 🎉
-
 ---
 
 ## 🧩 Notas finales
