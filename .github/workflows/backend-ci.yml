@@ -1,0 +1,54 @@
+name: Laravel Backend CI
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main", "develop" ]
+
+jobs:
+  backend-ci:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./backend
+
+    steps:
+      # 1️⃣ Clonar el código del repositorio
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2️⃣ Configurar PHP (usa 8.2, recomendada para Laravel 10/11)
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, intl, bcmath, pdo_mysql
+          tools: composer
+
+      # 3️⃣ Cachear dependencias de Composer
+      - name: Cache Composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      # 4️⃣ Instalar dependencias
+      - name: Install dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+      # 5️⃣ Copiar el archivo .env y generar la APP_KEY
+      - name: Prepare environment
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+
+      # 6️⃣ Ajustar permisos necesarios
+      - name: Set directory permissions
+        run: chmod -R 777 storage bootstrap/cache
+
+      # 7️⃣ Comprobar que Laravel se ejecuta correctamente
+      - name: Check Laravel installation
+        run: php artisan --version
