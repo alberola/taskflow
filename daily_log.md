@@ -29,6 +29,7 @@ Registro diario de avances, bloqueos y resultados del proyecto.
 ### 🗓️ Jueves 16 de octubre
 - Configuré la conexión a MySQL.
 - Ejecuté migraciones de prueba y comprobé la base de datos en phpMyAdmin.
+- Se replicó el proyecto en otro equipo y se valido funcionamiento.
 ✅ **Resultado:** Base de datos conectada correctamente.
 
 ---
@@ -52,7 +53,7 @@ Registro diario de avances, bloqueos y resultados del proyecto.
   - `php artisan test`
   - `php artisan migrate`
 - Verifiqué la ejecución automática en GitHub Actions.
-✅ **Resultado:** CI/CD funcional. Retraso recuperado respecto a la semana anterior.
+✅ **Resultado:** CI/CD funcional.
 
 ---
 
